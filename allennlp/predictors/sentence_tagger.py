@@ -6,13 +6,9 @@ import numpy
 
 from allennlp.common.util import JsonDict
 from allennlp.data import DatasetReader, Instance
-<<<<<<< HEAD
 from allennlp.data.fields import TextField, SequenceLabelField
 from allennlp.data.tokenizers.word_splitter import SpacyWordSplitter
-=======
 from allennlp.data.fields import FlagField, TextField, SequenceLabelField
-from allennlp.data.tokenizers.spacy_tokenizer import SpacyTokenizer
->>>>>>> 2a1b528f... Allow CRF to compute loss just for single span prediction (#3971)
 from allennlp.models import Model
 from allennlp.predictors.predictor import Predictor
 

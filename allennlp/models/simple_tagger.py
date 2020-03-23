@@ -97,7 +97,7 @@ class SimpleTagger(Model):
     @overrides
     def forward(
         self,  # type: ignore
-        tokens: TextFieldTensors,
+        tokens: Dict[str, torch.LongTensor],
         tags: torch.LongTensor = None,
         metadata: List[Dict[str, Any]] = None,
         ignore_loss_on_o_tags: bool = False,
