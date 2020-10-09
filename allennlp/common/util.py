@@ -217,7 +217,7 @@ def namespace_match(pattern: str, namespace: str):
 
 def prepare_environment(params: Params):
     """
-    Sets random seeds for reproducible experiments. This may not work as expected
+#    Sets random seeds for reproducible experiments. This may not work as expected
     if you use this from within a python project in which you have already imported Pytorch.
     If you use the scripts/run_model.py entry point to training models with this library,
     your experiments should be reasonably reproducible. If you are using this from your own
@@ -230,19 +230,19 @@ def prepare_environment(params: Params):
     params: `Params`
         A `Params` object or dict holding the json parameters.
     """
-    seed = params.pop_int("random_seed", 13370)
-    numpy_seed = params.pop_int("numpy_seed", 1337)
-    torch_seed = params.pop_int("pytorch_seed", 133)
+#    seed = params.pop_int("random_seed", 13370)
+#    numpy_seed = params.pop_int("numpy_seed", 1337)
+#    torch_seed = params.pop_int("pytorch_seed", 133)
 
-    if seed is not None:
-        random.seed(seed)
-    if numpy_seed is not None:
-        numpy.random.seed(numpy_seed)
-    if torch_seed is not None:
-        torch.manual_seed(torch_seed)
-        # Seed all GPUs with the same seed if available.
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(torch_seed)
+#    if seed is not None:
+#        random.seed(seed)
+#    if numpy_seed is not None:
+#        numpy.random.seed(numpy_seed)
+#    if torch_seed is not None:
+#        torch.manual_seed(torch_seed)
+#        # Seed all GPUs with the same seed if available.
+#        if torch.cuda.is_available():
+#            torch.cuda.manual_seed_all(torch_seed)
 
     log_pytorch_version_info()
 
