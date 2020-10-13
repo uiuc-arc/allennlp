@@ -83,8 +83,11 @@ class BidirectionalAttentionFlowTest(ModelTestCase):
                 for subfield in field:
                     field1=model_batch[key][subfield]
                     field2=loaded_batch[key][subfield]
-                    name=key+'.'+subfield
-                    assert_allclose(field1.data.numpy(), field2.data.numpy(),rtol=1e-6, err_msg=name)
+                    name=key+'.'+subfield                    
+                    if isinstance(field1, torch.autograd.Variable):
+                        assert_allclose(field1.data.numpy(), field2.data.numpy(),rtol=1e-6, err_msg=name)
+                    else:
+                        assert field1 == field2
                     #self.assert_fields_equal(model_batch[key][subfield],
                      #                        loaded_batch[key][subfield],
                      #                        tolerance=1e-6,
@@ -92,8 +95,8 @@ class BidirectionalAttentionFlowTest(ModelTestCase):
             else:
                 field1=model_batch[key]
                 field2=loaded_batch[key]
-                name=key
-                if isinstance(field1, torch.autograd.Variable):
+                name=key                
+                if isinstance(field1, torch.autograd.Variable):                    
                     assert_allclose(field1.data.numpy(), field2.data.numpy(), rtol=1e-6, err_msg=name)
                 else:
                     assert field1 == field2
