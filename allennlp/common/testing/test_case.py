@@ -3,7 +3,7 @@ import logging
 import os
 import shutil
 from unittest import TestCase
-
+import numpy as np
 from allennlp.common.checks import log_pytorch_version_info
 
 
@@ -23,7 +23,7 @@ class AllenNlpTestCase(TestCase):  # pylint: disable=too-many-public-methods
         logging.getLogger('allennlp.modules.token_embedders.embedding').setLevel(logging.INFO)
         log_pytorch_version_info()
 
-        self.TEST_DIR = "/tmp/allennlp_tests/"
+        self.TEST_DIR = "/tmp/allennlp_tests_{0}".format(np.random.randint(999999999))
         os.makedirs(self.TEST_DIR, exist_ok=True)
 
     def tearDown(self):
